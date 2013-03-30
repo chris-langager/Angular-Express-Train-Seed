@@ -15,6 +15,7 @@
     "async": "latest",
     "express-hbs": "latest",
     "passport": "latest",
+    "passport-local": "latest",
     "winston": "latest",
     "express-trace": "0.0.3"
   },
