@@ -20,7 +20,7 @@ function LoginCtrl($scope, $http, $rootScope, $location) {
                 $location.path($rootScope.redirect);
             })
             .error(function (data, status, headers, config) {
-                $scope.statusMessage = data.data;
+                $scope.statusMessage = data;
             });
     }
 }
@@ -36,7 +36,7 @@ function RegisterCtrl($scope, $http, $rootScope, $location) {
                 $location.path('/todos');
             })
             .error(function (data, status, headers, config) {
-                $scope.statusMessage = data.data;
+                $scope.statusMessage = data;
             });
     }
 }
@@ -45,7 +45,6 @@ function TodosCtrl($scope, $http, Todo) {
 
     //get the todos from server
     getTodosFromServer()
-
 
     $scope.newTodo = {};
 

@@ -31,7 +31,7 @@ module.exports = function (app) {
                         return next(err)
                     }
                     if (!user) {
-                        return res.send('Invalid email or password.', 400);
+                        return res.send('Invalid username or password.', 400);
                     }
                     req.logIn(user, function (err) {
                         if (err) {

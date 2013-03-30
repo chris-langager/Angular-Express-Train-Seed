@@ -1,4 +1,3 @@
-
 module.exports = function (app) {
     var controller = {};
     var Todo = app.models.Todo;
