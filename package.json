@@ -1,0 +1,34 @@
+{
+  "name": "Angular-Express-Train-Seed",
+  "version": "0.0.2",
+  "directories": {},
+  "engines": {
+    "node": ">=0.6.6",
+    "npm": ">=1.1"
+  },
+  "dependencies": {
+    "express": "latest",
+    "express-train": "latest",
+    "connect-timeout": "latest",
+    "connect-mongodb": "latest",
+    "mongoose": "latest",
+    "async": "latest",
+    "express-hbs": "latest",
+    "passport": "latest",
+    "winston": "latest",
+    "express-trace": "0.0.3"
+  },
+  "devDependencies": {
+    "mocha": "latest"
+  },
+  "main": "./node_modules/.bin/train run",
+  "scripts": {
+    "start": "./app/index.js",
+    "test": "mocha test"
+  },
+  "constants": {
+    "title": "structure app",
+    "session_length": 1209600000,
+    "request_timeout": 10000
+  }
+}

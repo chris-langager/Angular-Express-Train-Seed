@@ -1,0 +1,13 @@
+{
+    "cookie_secret":"boggle at the situation",
+    "session":{
+        "key":"boggle at the situation",
+        "secret": "boggle at the situation"
+    },
+    "request_timeout":1000,
+    "port":3000,
+    "mongodb":{
+        "uri":"mongodb://test:test@ds045507.mongolab.com:45507/service-health-train"
+    },
+    "character_encoding":"utf-8"
+}

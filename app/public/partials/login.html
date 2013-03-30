@@ -1,0 +1,24 @@
+<div class="offset4">
+
+
+    <div ng-controller="LoginCtrl">
+        <h2>Login</h2>
+
+        <form name="login-form">
+            <input type="text" ng-model="user.username" required placeholder="username..."/><br>
+            <input type="password" ng-model="user.password" required placeholder="password..."/> <br>
+            <button ng-click="submit()">Login</button> {{statusMessage}}
+        </form>
+    </div>
+    - or -
+    <div ng-controller="RegisterCtrl">
+        <h2>Register</h2>
+
+        <form name="register-form">
+            <input type="text" ng-model="user.username" required placeholder="username..."/> <br>
+            <input type="password" ng-model="user.password" required placeholder="password..."/> <br>
+            <input type="password" ng-model="user.confirmPassword" required placeholder="confirm password..."/> <br>
+            <button ng-click="submit()">Register</button> {{statusMessage}}
+        </form>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<style>
+    .completed{
+        text-decoration:line-through;
+        background: darkgrey;
+    }
+</style>
+
+<div class="span6 offset3">
+    <h2>My Todos</h2>
+    <hr>
+    <div class="pull-right">
+        <button class="btn" ng-click="removeComplete()">Remove Completed Todos</button>
+    </div>
+    <table class="table table-hover table-condensed" >
+        <thead>
+        <tr >
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="todo in todos" ng-class="{completed: todo.complete}">
+            <td class="span1"><input type="checkbox" ng-model="todo.complete" ng-click="markComplete(todo)"/></td>
+            <td >{{todo.text}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form name="newTodoForm" class="form-inline well">
+        <legend>New Todo</legend>
+        <input type="text" class="input-xlarge" ng-model="newTodo.text" required placeholder="Todo...">
+        <button class="btn btn-primary" ng-click="createTodo()">Create</button>
+        <br>
+        {{statusMessage}}
+    </form>
+</div>

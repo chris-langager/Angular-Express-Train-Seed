@@ -1,0 +1,16 @@
+{
+    "view_engine": "hbs",
+    "cookie_secret":"mysecret",
+    "session":{
+        "key":"mykey",
+        "secret": "mysecret",
+        "url":"{{MONGOLAB_URI}}"
+    },
+    "http":{
+        "port":"{{PORT}}"
+    },
+    "mongodb":{
+        "uri":"{{MONGOLAB_URI}}"
+    },
+    "character_encoding":"utf-8"
+}

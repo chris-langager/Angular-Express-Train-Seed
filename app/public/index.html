@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Angular Express Train</title>
+    <link rel='stylesheet' href='/css/style.css'/>
+    <link rel='stylesheet' href='/css/bootstrap.min.css'/>
+</head>
+<body>
+<div class="container">
+    <div class="navbar navbar-inverse">
+
+        <div class="navbar-inner">
+            <a class="brand" ng-href='/'>Angular Express Train</a>
+            <ul class="nav">
+                <li><a ng-href="/todos" ng-show="user.username">My Todos</a></li>
+            </ul>
+            <ul class="nav pull-right" >
+                <li ng-hide="user.username"><a ng-href="/login">Login/Register</a> </li>
+                <li class="dropdown" ng-show="user.username">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello, {{user.username}} <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="logout()">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container" ng-view>
+
+</div>
+</body>
+<script src="/js/lib/jquery/jquery.js"></script>
+<script src="/js/lib/bootstrap/bootstrap.js"></script>
+<script src="/js/lib/angular/angular.js"></script>
+<script src="/js/lib/angular/angular-resource.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/services.js"></script>
+<script src="/js/controllers.js"></script>
+<script src="/js/filters.js"></script>
+<script src="/js/directives.js"></script>
+</html>
