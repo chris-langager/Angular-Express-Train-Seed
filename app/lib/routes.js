@@ -9,7 +9,11 @@ module.exports = function (app) {
     app.post('/user/register', app.controllers.user.create);
     app.post('/user/logout', app.controllers.user.kill);
 
-
+    /*
+    Rather than go right to the API routes below, we need to do a few things first, like say what Users Todos
+    to return and stamp the Todos they create with their ID.  Once we've dne these things (in the "pre" functions),
+    we end up invoking the generic api methods.  Cool, right?
+     */
     app.get('/api/Todo', ensureAuthenticated, app.controllers.todo.preSearch, app.controllers.api.search);
     app.post('/api/Todo', ensureAuthenticated, app.controllers.todo.preCreate, app.controllers.api.create);
 
@@ -22,7 +26,11 @@ module.exports = function (app) {
     app.post('/api/:model/:id', ensureAuthenticated, app.controllers.api.update);
     app.del('/api/:model/:id', ensureAuthenticated, app.controllers.api.destroy);
 
-    //default route if we haven't hit anything yet
+    /*
+    default route if we haven't hit anything yet
+    This will just return the index file and pass the url to our angular app.
+    Angular will decide if it should display a 404 page.
+     */
     app.get('*', app.controllers.home.index);
 
     /*
@@ -36,13 +44,14 @@ module.exports = function (app) {
             //if the request is for a model that does not exist, 404
             return res.send(404);
         }
-
         req.Model = Model;
         return next();
     });
 
-    //make sure this person is logged in.
-    //if they aren't, return a 401.  This let's angular know to go to a login page
+    /*
+    Make sure this person is logged in.
+    If they aren't, return a 401.  This let's angular know to go to a login page.
+     */
     function ensureAuthenticated(req, res, next) {
         if (req.isAuthenticated()) {
             return next();

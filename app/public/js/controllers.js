@@ -56,12 +56,12 @@ function TodosCtrl($scope, $http, Todo) {
         Todo.save({}, $scope.newTodo,
             function (data) {
                 $scope.statusMessage = '';
-                getTodosFromServer()
+                getTodosFromServer();
                 $scope.newTodo = {};
 
             },
             function (data, status, headers, config) {
-                $scope.statusMessage = data.data;
+                $scope.statusMessage = data;
             });
     }
 

@@ -3,13 +3,10 @@ module.exports = function (app) {
     return {
         getCurrent: [
             function (req, res, next) {
-
                 if (!req.user) {
-                    console.log('no user on request');
                     res.send(400);
                 }
                 else {
-
                     User.findOne({_id: req.user.id}, function (err, results) {
                         if (err) return next(err);
                         if (results) {
@@ -17,7 +14,6 @@ module.exports = function (app) {
                             res.send({username: results.username});
                         }
                         else {
-                            console.log('no results in db');
                             res.send(400);
                         }
                     });
@@ -27,16 +23,12 @@ module.exports = function (app) {
         authenticate: [
             function (req, res, next) {
                 app.middleware.passport.authenticate('local', function (err, user, info) {
-                    if (err) {
-                        return next(err)
-                    }
+                    if (err) return next(err);
                     if (!user) {
                         return res.send('Invalid username or password.', 400);
                     }
                     req.logIn(user, function (err) {
-                        if (err) {
-                            console.log(err);
-                        }
+                        if (err) return next(err);
                         return res.send('Ok', 200);
                     });
                 })(req, res, next);
@@ -44,7 +36,6 @@ module.exports = function (app) {
 
         create: [
             function (req, res, next) {
-                console.log(req);
                 var user = new User(req.body);
                 User.findOne({username: user.username}, function (err, results) {
                     if (err) return next(err);

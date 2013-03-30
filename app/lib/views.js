@@ -3,8 +3,6 @@ var hbs = require('express-hbs'),
 
 module.exports = function (app) {
 
-
-
     //set up view engine
     app.set('view engine', 'hbs');
 
@@ -12,18 +10,8 @@ module.exports = function (app) {
         partialsDir:path.join(app.dir, "/views/partials")
     }));
 
-
-
     // Static locals
     app.locals({
     });
-
-//    app.set('views', app.dir + '/views');
-//    app.engine('.html', ejs.renderFile);
-//    app.set('view engine', 'html');
-//    app.set('view options', {
-//        layout: false
-//    });
-
 
 };

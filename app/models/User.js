@@ -10,7 +10,6 @@ module.exports = function (app) {
         salt: {type:String, required:true}
     });
 
-
     UserSchema.virtual('password')
         .set(function(password) {
             this._password = password;
