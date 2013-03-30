@@ -1,3 +1,0 @@
-#!/usr/bin/env node
-var repl = require('repl').start('> ');
-require('../')(repl, process.env.HOME + '/.node_history');
