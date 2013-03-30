@@ -3,6 +3,6 @@
 
 angular.module('myApp.services', ['ngResource'])
     .factory('Todo', function ($resource) {
-        return $resource('api/todo/:id', {}, {
+        return $resource('api/Todo/:id', {}, {
         });
     });

@@ -1,4 +1,3 @@
-
 module.exports = function (app) {
 
     // Home
@@ -10,25 +9,30 @@ module.exports = function (app) {
     app.post('/user/register', app.controllers.user.create);
     app.post('/user/logout', app.controllers.user.kill);
 
+
+    app.get('/api/Todo', ensureAuthenticated, app.controllers.todo.preSearch, app.controllers.api.search);
+    app.post('/api/Todo', ensureAuthenticated, app.controllers.todo.preCreate, app.controllers.api.create);
+
+
     //Generic restful api for all models - if previous routes are not matched, will fall back to these
     //See libs/params.js, which adds param middleware to load & set req.Model based on :model argument
-    app.get('/api/todo', ensureAuthenticated, app.controllers.todo.list);
-    app.post('/api/todo', ensureAuthenticated, app.controllers.todo.create);
-    app.get('/api/todo/:id',ensureAuthenticated,  app.controllers.todo.read);
-    app.post('/api/todo/:id', ensureAuthenticated, app.controllers.todo.update);
-    app.del('/api/todo/:id', ensureAuthenticated, app.controllers.todo.destroy);
+    app.get('/api/:model', ensureAuthenticated, app.controllers.api.search);
+    app.post('/api/:model', ensureAuthenticated, app.controllers.api.create);
+    app.get('/api/:model/:id', ensureAuthenticated, app.controllers.api.read);
+    app.post('/api/:model/:id', ensureAuthenticated, app.controllers.api.update);
+    app.del('/api/:model/:id', ensureAuthenticated, app.controllers.api.destroy);
 
     //default route if we haven't hit anything yet
     app.get('*', app.controllers.home.index);
 
     /*
-    Route Helpers
+     Route Helpers
      */
 
     //whenever a router parameter :model is matched, this is run
-    app.param('model', function(req, res, next, model) {
+    app.param('model', function (req, res, next, model) {
         var Model = app.models[model];
-        if(Model === undefined) {
+        if (Model === undefined) {
             //if the request is for a model that does not exist, 404
             return res.send(404);
         }
