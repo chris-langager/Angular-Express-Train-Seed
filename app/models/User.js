@@ -19,6 +19,7 @@ module.exports = function (app) {
         .get(function() { return this._password; });
 
     UserSchema.method('authenticate', function(plainText) {
+        app.log.debug();
         console.log('authenticate called:')
         console.log('plain text = ' + plainText)
         console.log('hashed = ' + this.encryptPassword(plainText))

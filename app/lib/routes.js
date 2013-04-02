@@ -16,7 +16,8 @@ module.exports = function (app) {
      */
     app.get('/api/Todo', ensureAuthenticated, app.controllers.todo.preSearch, app.controllers.api.search);
     app.post('/api/Todo', ensureAuthenticated, app.controllers.todo.preCreate, app.controllers.api.create);
-
+    app.post('/api/Todo/:id', ensureAuthenticated, app.controllers.todo.preUpdate, app.controllers.api.update);
+    app.del('/api/Todo/:id', ensureAuthenticated, app.controllers.todo.preDestroy, app.controllers.api.destroy);
 
     //Generic restful api for all models - if previous routes are not matched, will fall back to these
     //See libs/params.js, which adds param middleware to load & set req.Model based on :model argument

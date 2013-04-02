@@ -55,8 +55,8 @@ function TodosCtrl($scope, $http, Todo) {
         }
         Todo.save({}, $scope.newTodo,
             function (data) {
+                $scope.todos.push(data);
                 $scope.statusMessage = '';
-                getTodosFromServer();
                 $scope.newTodo = {};
 
             },
@@ -74,10 +74,11 @@ function TodosCtrl($scope, $http, Todo) {
     $scope.removeComplete = function () {
         $scope.todos.forEach(function (todo) {
             if (todo.complete) {
-                todo.$delete({id: todo._id});
+                todo.$delete({id: todo._id}, function(){                    //delete on server
+                    $scope.todos.splice( $scope.todos.indexOf(todo), 1 );   //remove from client
+                });
             }
         })
-        getTodosFromServer();
     }
 
     function getTodosFromServer() {
