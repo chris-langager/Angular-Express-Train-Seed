@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-module.exports = function (app) {
+module.exports = function () {
 
     var TodoSchema = new mongoose.Schema({
         text: {type:String},                            //text of the todo

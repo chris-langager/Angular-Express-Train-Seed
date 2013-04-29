@@ -1,38 +1,38 @@
-module.exports = function (app) {
+module.exports = function (app, homeController, userController, todoController, apiController) {
 
     // Home
-    app.get('/', app.controllers.home.index);
+    app.get('/', homeController.index);
 
     //User
-    app.get('/user', app.controllers.user.getCurrent);
-    app.post('/user/login', app.controllers.user.authenticate);
-    app.post('/user/register', app.controllers.user.create);
-    app.post('/user/logout', app.controllers.user.kill);
+    app.get('/user', userController.getCurrent);
+    app.post('/user/login', userController.authenticate);
+    app.post('/user/register', userController.create);
+    app.post('/user/logout', userController.kill);
 
     /*
     Rather than go right to the API routes below, we need to do a few things first, like say what Users Todos
     to return and stamp the Todos they create with their ID.  Once we've dne these things (in the "pre" functions),
     we end up invoking the generic api methods.  Cool, right?
      */
-    app.get('/api/Todo', ensureAuthenticated, app.controllers.todo.preSearch, app.controllers.api.search);
-    app.post('/api/Todo', ensureAuthenticated, app.controllers.todo.preCreate, app.controllers.api.create);
-    app.post('/api/Todo/:id', ensureAuthenticated, app.controllers.todo.preUpdate, app.controllers.api.update);
-    app.del('/api/Todo/:id', ensureAuthenticated, app.controllers.todo.preDestroy, app.controllers.api.destroy);
+    app.get('/api/Todo', ensureAuthenticated, todoController.preSearch, apiController.search);
+    app.post('/api/Todo', ensureAuthenticated, todoController.preCreate, apiController.create);
+    app.post('/api/Todo/:id', ensureAuthenticated, todoController.preUpdate, apiController.update);
+    app.del('/api/Todo/:id', ensureAuthenticated, todoController.preDestroy, apiController.destroy);
 
     //Generic restful api for all models - if previous routes are not matched, will fall back to these
     //See libs/params.js, which adds param middleware to load & set req.Model based on :model argument
-    app.get('/api/:model', ensureAuthenticated, app.controllers.api.search);
-    app.post('/api/:model', ensureAuthenticated, app.controllers.api.create);
-    app.get('/api/:model/:id', ensureAuthenticated, app.controllers.api.read);
-    app.post('/api/:model/:id', ensureAuthenticated, app.controllers.api.update);
-    app.del('/api/:model/:id', ensureAuthenticated, app.controllers.api.destroy);
+    app.get('/api/:model', ensureAuthenticated, apiController.search);
+    app.post('/api/:model', ensureAuthenticated, apiController.create);
+    app.get('/api/:model/:id', ensureAuthenticated, apiController.read);
+    app.post('/api/:model/:id', ensureAuthenticated, apiController.update);
+    app.del('/api/:model/:id', ensureAuthenticated, apiController.destroy);
 
     /*
     default route if we haven't hit anything yet
     This will just return the index file and pass the url to our angular app.
     Angular will decide if it should display a 404 page.
      */
-    app.get('*', app.controllers.home.index);
+    app.get('*', homeController.index);
 
     /*
      Route Helpers

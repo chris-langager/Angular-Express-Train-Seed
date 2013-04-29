@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "express": "latest",
-    "express-train": "0.0.x",
+    "express-train": "1.0.x",
     "connect-timeout": "latest",
     "connect-mongodb": "latest",
     "mongoose": "latest",
@@ -22,11 +22,10 @@
   "devDependencies": {
     "mocha": "latest"
   },
-  "main": "./node_modules/.bin/train run",
-  "scripts": {
-    "start": "./app/index.js",
-    "test": "mocha test"
-  },
+    "main": "./app/index.js",
+    "scripts": {
+        "start": "./app/index.js"
+    },
   "constants": {
     "title": "structure app",
     "session_length": 1209600000,

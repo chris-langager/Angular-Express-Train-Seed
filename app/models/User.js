@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     crypto = require('crypto');
 
 
-module.exports = function (app) {
+module.exports = function () {
 
     var UserSchema = new mongoose.Schema({
         username: { type:String, required:true , unique:true},
@@ -19,7 +19,6 @@ module.exports = function (app) {
         .get(function() { return this._password; });
 
     UserSchema.method('authenticate', function(plainText) {
-        app.log.debug();
         console.log('authenticate called:')
         console.log('plain text = ' + plainText)
         console.log('hashed = ' + this.encryptPassword(plainText))
