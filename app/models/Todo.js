@@ -8,5 +8,5 @@ module.exports = function () {
         userId: {type:mongoose.Schema.Types.ObjectId}   //the user this todo belongs to
     });
 
-    return mongoose.model('Todo', TodoSchema);
+    return mongoose.model('todo', TodoSchema);
 }

@@ -49,7 +49,7 @@ module.exports = function () {
         }
     });
 
-    return mongoose.model('User', UserSchema);
+    return mongoose.model('user', UserSchema);
 }
 
 function validatePresenceOf(value) {
