@@ -8,5 +8,11 @@ module.exports = function () {
         userId: {type:mongoose.Schema.Types.ObjectId}   //the user this todo belongs to
     });
 
-    return mongoose.model('todo', TodoSchema);
+
+    try {
+        // Throws an error if "Name" hasn't been registered
+        mongoose.model("Todo")
+    } catch (e) {
+        mongoose.model("Todo", TodoSchema)
+    }
 }
