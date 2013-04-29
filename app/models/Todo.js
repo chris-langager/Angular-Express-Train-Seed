@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-module.exports = function () {
+module.exports = function (app) {
 
     var TodoSchema = new mongoose.Schema({
         text: {type:String},                            //text of the todo
@@ -9,10 +9,10 @@ module.exports = function () {
     });
 
 
+   //work around - for some reason this is getting called twice, and throws an error the second time around
     try {
-        // Throws an error if "Name" hasn't been registered
-        mongoose.model("Todo")
-    } catch (e) {
-        mongoose.model("Todo", TodoSchema)
-    }
+        mongoose.model('Todo', TodoSchema);
+    } catch (error) {}
+
+    return mongoose.model('Todo');
 }

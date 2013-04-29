@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     crypto = require('crypto');
 
 
-module.exports = function () {
+module.exports = function (app) {
 
     var UserSchema = new mongoose.Schema({
         username: { type:String, required:true , unique:true},
@@ -49,7 +49,13 @@ module.exports = function () {
         }
     });
 
-    return mongoose.model('User', UserSchema);
+    //work around - for some reason this is getting called twice, and throws an error the second time around
+    try {
+        mongoose.model('User', UserSchema);
+    } catch (error) {}
+
+    return mongoose.model('User');
+
 }
 
 function validatePresenceOf(value) {
