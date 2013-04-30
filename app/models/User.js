@@ -49,12 +49,14 @@ module.exports = function (app) {
         }
     });
 
-    //work around - for some reason this is getting called twice, and throws an error the second time around
-    try {
-        mongoose.model('User', UserSchema);
-    } catch (error) {}
+    return mongoose.model('User', UserSchema);
 
-    return mongoose.model('User');
+    //work around - for some reason this is getting called twice, and throws an error the second time around
+//    try {
+//        mongoose.model('User', UserSchema);
+//    } catch (error) {}
+//
+//    return mongoose.model('User');
 
 }
 

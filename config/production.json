@@ -1,16 +1,13 @@
 {
-    "view_engine": "hbs",
-    "cookie_secret":"mysecret",
-    "session":{
-        "key":"mykey",
-        "secret": "mysecret",
-        "url":"{{MONGOLAB_URI}}"
+    "cookie_secret": "boggle at the situation",
+    "session": {
+        "key": "boggle at the situation",
+        "secret": "boggle at the situation"
     },
-    "http":{
-        "port":"{{PORT}}"
+    "request_timeout": 1000,
+    "port": "{{PORT}}",
+    "mongodb": {
+        "uri": "{{MONGOLAB_URI}}"
     },
-    "mongodb":{
-        "uri":"{{MONGOLAB_URI}}"
-    },
-    "character_encoding":"utf-8"
+    "character_encoding": "utf-8"
 }
