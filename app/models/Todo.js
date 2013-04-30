@@ -9,10 +9,4 @@ module.exports = function (app) {
     });
 
     return mongoose.model('Todo', TodoSchema);
-    //work around - for some reason this is getting called twice, and throws an error the second time around
-//    try {
-//        mongoose.model('Todo', TodoSchema);
-//    } catch (error) {}
-//
-//    return mongoose.model('Todo');
 }

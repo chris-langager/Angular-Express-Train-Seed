@@ -51,13 +51,6 @@ module.exports = function (app) {
 
     return mongoose.model('User', UserSchema);
 
-    //work around - for some reason this is getting called twice, and throws an error the second time around
-//    try {
-//        mongoose.model('User', UserSchema);
-//    } catch (error) {}
-//
-//    return mongoose.model('User');
-
 }
 
 function validatePresenceOf(value) {
