@@ -8,7 +8,7 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives'])
         $routeProvider
             .when('/', { templateUrl: '/partials/index.html', controller: IndexCtrl })
             .when('/login', { templateUrl: '/partials/login.html'})
-            .when('/todos', { templateUrl: '/partials/todos.html', controller: TodosCtrl })
+            .when('/mytodos', { templateUrl: '/partials/todos.html', controller: TodosCtrl })
             .otherwise({ templateUrl: '/partials/404.html' });
 
         //gets rid of the # in urls
