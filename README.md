@@ -14,6 +14,8 @@ Order you should learn this stuff, if you don't know it already:
 3. Express (http://expressjs.com/)
 4. Express Train (https://npmjs.org/package/express-train)
 
+Since this app is using express train, start it by using the command 'train run'.  You may need to install express-train globally - 'npm install -g express-train'
+
 
 
 
