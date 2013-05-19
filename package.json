@@ -7,25 +7,25 @@
     "npm": ">=1.1"
   },
   "dependencies": {
-    "express": "latest",
-    "express-train": "1.0.x",
-    "connect-timeout": "latest",
-    "connect-mongodb": "latest",
-    "mongoose": "latest",
-    "async": "latest",
-    "express-hbs": "latest",
-    "passport": "latest",
-    "passport-local": "latest",
-    "winston": "latest",
+    "express": "~3.2.4",
+    "express-train": "~1.0.2",
+    "connect-timeout": "0.0.1",
+    "connect-mongodb": "~1.1.5",
+    "mongoose": "~3.6.11",
+    "async": "~0.2.8",
+    "express-hbs": "~0.2.0",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "winston": "~0.7.1",
     "express-trace": "0.0.3"
   },
   "devDependencies": {
     "mocha": "latest"
   },
-    "main": "./app/index.js",
-    "scripts": {
-        "start": "./app/index.js"
-    },
+  "main": "./app/index.js",
+  "scripts": {
+    "start": "./app/index.js"
+  },
   "constants": {
     "title": "structure app",
     "session_length": 1209600000,

@@ -40,6 +40,7 @@ module.exports = function (app, homeController, userController, todoController, 
 
     //whenever a router parameter :model is matched, this is run
     app.param('model', function (req, res, next, model) {
+        console.log(app);
         var Model = app.models[model];
         if (Model === undefined) {
             //if the request is for a model that does not exist, 404
